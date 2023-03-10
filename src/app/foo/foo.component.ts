@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Foo } from './foo.model';
+import { articoli } from './foo.model';
 
 @Component({
   selector: 'app-foo',
@@ -13,8 +14,8 @@ export class FooComponent {
   dataGet: Object;
   dataPost: Object;
   o :Observable<Object>;
-  fooData : Foo[];
-  oFoo : Observable<Foo[]>;
+  fooData : articoli[];
+  oFoo : Observable<articoli[]>;
 
   constructor(public http: HttpClient) {
 
@@ -25,7 +26,7 @@ export class FooComponent {
     this.loading = true; 
     //Facciamo una get e otteniamo l'oggetto Observable che attende la risposta
     //this.o = this.http.get('https://my-json-server.typicode.com/PaoloCarugati/dischi/records/1');
-    this.o = this.http.get('https://my-json-server.typicode.com/PaoloCarugati/dischi/records/');
+    this.o = this.http.get('https://my-json-server.typicode.com/Molodduwa/reddit_angular/articoli/');
     //Attacchiamo all'Observable o un metodo "observer" che verrà lanciato quando arriva la 
     //risposta
     this.o.subscribe(this.getData);
@@ -57,7 +58,7 @@ export class FooComponent {
    makeTypedRequest() : void
    {
      //oFoo : Observable<Foo[]>; va dichiarato tra gli attributi della classe 
-     this.oFoo = this.http.get<Foo[]>('https://my-json-server.typicode.com/PaoloCarugati/dischi/records');
+     this.oFoo = this.http.get<articoli[]>('https://my-json-server.typicode.com/Molodduwa/reddit_angular/articoli/');
      this.oFoo.subscribe(d => {this.fooData = d;});
    }  
  
